@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guide Genius - Student Course Guidance</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to an external stylesheet -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #e0f7fa; /* Light teal background */
+        }
+        header {
+            background-color: #008080; /* Teal */
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px 0;
+        }
+        section {
+            margin-bottom: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+        h2 {
+            margin-top: 0;
+            color: #008080; /* Teal */
+            text-align: center;
+        }
+        select {
+            padding: 10px;
+            font-size: 16px;
+            width: 100%; /* Ensure dropdown fills its container */
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background: #004d4d; /* Darker teal */
+            color: #fff;
+            clear: both;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .cta {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .cta a {
+            display: inline-block;
+            background-color: #008080; /* Teal */
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .cta a:hover {
+            background-color: #006666; /* Darker teal */
+        }
+        .navbar {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .navbar li {
+            margin: 0 10px;
+        }
+        .navbar a {
+            text-decoration: none;
+            color: #333;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #f0f0f0;
+            transition: background-color 0.3s ease;
+        }
+        .navbar a:hover {
+            background-color: #008080; /* Teal */
+            color: #fff;
+        }
+        .flex-container {
+            display: flex;
+            justify-content: space-around;
+        }
+        .courses-list {
+            width: 45%;
+        }
+        .jobs-list {
+            width: 45%;
+        }
+    </style>
+    <script>
+        function showAvailableCourses(courseCompleted) {
+            let courses = {
+                "10th": {
+                    courses: ["Intermediate (10+2)", "Diploma Courses", "ITI Courses", "Polytechnic Diploma", "ITI (Industrial Training Institutes)", "NDA (National Defence Academy)"],
+                    jobs: ["Various entry-level positions in different industries."]
+                },
+                "Intermediate (10+2)": {
+                    courses: ["Engineering", "Medical", "Commerce", "Arts & Humanities", "Agriculture", "Law", "Fashion Designing", "Hotel Management", "Mass Communication", "Animation & Multimedia"],
+                    jobs: ["Engineer", "Doctor", "Accountant", "Lawyer", "Designer", "Manager", "Journalist", "Animator"]
+                },
+                "Diploma Courses": {
+                    courses: ["Engineering Diploma", "Polytechnic Diploma", "Hotel Management", "Fashion Designing", "Digital Marketing", "Interior Designing", "Event Management", "Beauty & Wellness", "Financial Accounting", "Travel & Tourism"],
+                    jobs: ["Diploma Engineer", "Hotel Manager", "Fashion Designer", "Digital Marketer", "Interior Designer", "Event Manager", "Accountant", "Tour Guide"]
+                },
+                "ITI Courses": {
+                    courses: ["Electrician", "Fitter", "Welder", "Mechanic (Motor Vehicle)", "Plumber", "Carpenter", "Draughtsman (Civil)", "Machinist", "Refrigeration & Air Conditioning"],
+                    jobs: ["Electrician", "Fitter", "Welder", "Mechanic", "Plumber", "Carpenter", "Draughtsman", "Machinist", "HVAC Technician"]
+                },
+                "Polytechnic Diploma": {
+                    courses: ["Civil Engineering", "Mechanical Engineering", "Electrical Engineering", "Computer Science Engineering", "Electronics & Communication Engineering", "Automobile Engineering", "Information Technology"],
+                    jobs: ["Civil Engineer", "Mechanical Engineer", "Electrical Engineer", "Computer Engineer", "Electronics Engineer", "Automobile Engineer", "IT Professional"]
+                },
+                "ITI (Industrial Training Institutes)": {
+                    courses: ["Electrician", "Fitter", "Welder", "Mechanic (Motor Vehicle)", "Plumber", "Carpenter", "Draughtsman (Civil)", "Machinist", "Refrigeration & Air Conditioning"],
+                    jobs: ["Electrician", "Fitter", "Welder", "Mechanic", "Plumber", "Carpenter"," Draughtsman", "Machinist"," HVAC ","Technician."]
+                },
+                "NDA (National Defence Academy)": {
+                    courses: ["Indian Army", "Indian Navy", "Indian Air Force"],
+                    jobs: ["Officer in Indian Armed Forces."]
+                },
+                // Add more courses as needed
+            };
+
+            let availableCourses = courses[courseCompleted];
+
+            let coursesList = document.getElementById("courses-list");
+            let jobsList = document.getElementById("jobs-list");
+            coursesList.innerHTML = "";
+            jobsList.innerHTML = "";
+
+            if (availableCourses) {
+                availableCourses.courses.forEach((course, index) => {
+                    let courseLi = document.createElement("li");
+                    courseLi.textContent = course;
+                    coursesList.appendChild(courseLi);
+
+                    // Add corresponding job information
+                    let jobLi = document.createElement("li");
+                    jobLi.textContent = availableCourses.jobs[index];
+                    jobsList.appendChild(jobLi);
+                });
+            } else {
+                let courseLi = document.createElement("li");
+                courseLi.textContent = "No courses available after " + courseCompleted;
+                coursesList.appendChild(courseLi);
+                jobsList.innerHTML = ""; // Clear jobs list if no courses available
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Guide Genius</h1>
+        <p>Your pathway to a successful career</p>
+    </header>
+    <nav>
+        <ul class="navbar">
+            <li><a href="#">Home</a></li>
+            <li><a href="about1.html">About Us</a></li>
+            <li><a href="courses.html">Courses</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="C:\Users\Vyshnavi Vanka\Desktop\contact.html">Contact</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <section>
+            <h2>Select Completed Course:</h2>
+            <div style="text-align: center;">
+                <select id="completed-course" onchange="showAvailableCourses(this.value)">
+                    <option value="">Select Course Completed</option>
+                    <option value="10th">10th Class</option>
+                    <option value="Intermediate (10+2)">Intermediate (10+2)</option>
+                    <option value="Diploma Courses">Diploma Courses</option>
+                    <option value="ITI Courses">ITI Courses</option>
+                    <option value="Polytechnic Diploma">Polytechnic Diploma</option>
+                    <option value="ITI (Industrial Training Institutes)">ITI (Industrial Training Institutes)</option>
+                    <option value="NDA (National Defence Academy)">NDA (National Defence Academy)</option>
+                    <!-- Add more options as needed -->
+                </select>
+            </div>
+        </section>
+        <section>
+            <div class="flex-container">
+                <div class="courses-list">
+                    <h2>Available Courses:</h2>
+                    <ul id="courses-list">
+                        <!-- Courses will be dynamically populated here -->
+                    </ul>
+                </div>
+                <div class="jobs-list">
+                    <h2>Related Jobs:</h2>
+                    <ul id="jobs-list">
+                        <!-- Jobs related to courses will be dynamically populated here -->
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+    <footer>
+        <p>&copy; 2024 Guide Genius. All rights reserved.</p>
+    </footer>
+</body>
+</html>
